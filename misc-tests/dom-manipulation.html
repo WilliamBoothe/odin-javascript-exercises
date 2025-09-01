@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manipulation</title>
+    <!-- Defer to load after body: <script src="js-file.js" defer></script> -->
+  </head>
+
+  <body>
+    <h1>THE TITLE OF YOUR WEBPAGE</h1>
+    <div id="container"></div>
+
+    <script>
+      const container = document.querySelector("#container");
+
+      const content = document.createElement("div");
+      content.classList.add("content");
+      content.textContent = "This is the glorious text-content!";
+      container.appendChild(content);
+
+      const para = document.createElement("p");
+      para.style.color = "red";
+      para.textContent = "Hey I'm red!";
+      container.appendChild(para);
+
+      const blueHeader = document.createElement("h3");
+      blueHeader.style.color = "blue";
+      blueHeader.textContent = "I'm a blue h3!";
+      container.appendChild(blueHeader);
+
+      // Another div
+      const newDiv = document.createElement("div");
+      newDiv.style.border = "medium solid black";
+      newDiv.style.backgroundColor = "pink";
+
+      const anotherHeader = document.createElement("h3");
+      anotherHeader.textContent = "I'm in a div";
+      newDiv.appendChild(anotherHeader);
+
+      const anotherPara = document.createElement("p");
+      anotherPara.textContent = "ME TOO!";
+      newDiv.appendChild(anotherPara);
+
+      container.appendChild(newDiv);
+    </script>
+
+    <!-- Fun with events -->
+    <!-- Button 1 -->
+    <button onclick="alert('Hello World')">Click Me</button>
+    <!-- Button 2 -->
+    <button id="btn2">Click Me</button>
+    <!-- Button 3 -->
+    <button id="btn3">Click Me Too</button>
+    <!-- Button 4 -->
+    <button id="btn4">Click Me</button>
+
+    <script>
+      // Button Method 2
+      const secondBtn = document.querySelector("#btn2");
+      secondBtn.onclick = () => alert("Hello World");
+      // Button Method 3 - Preferred method
+      const thirdBtn = document.querySelector("#btn3");
+      thirdBtn.addEventListener("click", () => {
+        alert("Hello World");
+      });
+      // Button 4 - Access callback event
+      const fourthBtn = document.querySelector("#btn4");
+      fourthBtn.addEventListener("click", function (e) {
+        console.log(e.target);
+        e.target.style.backgroundColor = "blue";
+      });
+      // Query all buttons
+      const buttons = document.querySelectorAll("button");
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          alert(button.id);
+        });
+      });
+    </script>
+  </body>
+</html>
